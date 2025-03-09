@@ -5,35 +5,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </head>
   <body>
-    <form class="row g-3 needs-validation" action="/add" method="Post">
+    <form class="row g-3" action="/add" method="Post" novalidate>
         <input type="hidden" name="action_type" id="action_type">
         <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">Album Name</label>
+            <label class="form-label">Album Name</label>
             <input type="text" class="form-control" id="validationCustom01" name="album_name" required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Artist</label>
             <input type="text" class="form-control" id="validationCustom02" name="artist" required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Genre</label>
             <input type="text" class="form-control" id="validationCustom02" name="genre" required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
         </div>
         <div class="col-md-3">
             <label for="validationCustom01" class="form-label">Year</label>
             <input type="number" class="form-control" id="validationCustom03" name="year" required>
-            <div class="invalid-feedback">
-            Please provide a valid city.
-            </div>
         </div>
         <div class="col-md-3">
             <label for="validationCustom04" class="form-label">Rating</label>
@@ -50,9 +38,6 @@
             <option>9</option>
             <option>10</option>
             </select>
-            <div class="invalid-feedback">
-            Please select a valid state.
-            </div>
         </div>
         <div class="col-md-3">
             <label for="validationCustom04" class="form-label">Condition</label>
@@ -63,16 +48,10 @@
             <option>Fair</option>
             <option>Bad</option>
             </select>
-            <div class="invalid-feedback">
-            Please select a valid state.
-            </div>
         </div>
         <div class="col-md-3">
             <label for="validationCustom01" class="form-label">Price</label>
             <input type="decimal" class="form-control" id="validationCustom02" name=price required>
-            <div class="valid-feedback">
-            Looks good!
-            </div>
         </div>
         </div>
 
@@ -81,17 +60,15 @@
         </div>
 
         <div class="col-3">
+            <button class="btn btn-primary" formaction="/delete">Delete All Records</button>
+        </div>
+
+        <div class="col-3">
             <button class="btn btn-primary" type="submit" name="action_type" value="filter">Filter Records</button>
         </div>
 
         <div class="col-3">
             <button class="btn btn-primary" type="submit">View All Records</button>
-        </div>
-    </form>
-
-    <form action="/delete" method="POST">
-        <div class="col-3">
-            <button class="btn btn-primary" >Delete All Records</button>
         </div>
     </form>
 
