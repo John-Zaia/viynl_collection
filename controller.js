@@ -3,7 +3,8 @@ const router = express.Router();
 const model = require('./model.js');
 
 router.get("/", async (req, res) => {
-    res.render("homepage");
+    const records = await model.get_all_records();
+    res.render("homepage", {records});
 });
 
 router.post("/add", async (req, res) =>{

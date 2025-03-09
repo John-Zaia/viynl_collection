@@ -19,6 +19,7 @@
             </tr>
         </thead>
         <tbody>
+            {{#records}}
             <tr>
                 <td>{{album_name}}</td>
                 <td>{{artist}}</td>
@@ -29,6 +30,7 @@
                 <td>{{price}}</td>
                 <td><button type="button" class="btn btn-primary">Update</button>  <button type="button" class="btn btn-danger">Delete</button></td>
             </tr>
+            {{/records}}
         </tbody>
     </table>
   </body>
