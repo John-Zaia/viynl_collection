@@ -19,8 +19,12 @@ async function get_all_records(){
     return await db.all("SELECT * FROM Records");
 }
 
+async function delete_all_records(){
+    return await db.all("DELETE FROM Records")
+}
 module.exports = {
     startup,
     add_record,
-    get_all_records
+    get_all_records,
+    delete_all_records
 }

@@ -22,4 +22,9 @@ router.post("/add", async (req, res) =>{
         res.redirect("/");
 })
 
+router.post("/delete", async (req, res) =>{
+    await model.delete_all_records();
+    res.redirect("/");
+})
+
 module.exports = router;
