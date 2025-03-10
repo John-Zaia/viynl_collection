@@ -8,6 +8,7 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
+                <th scope="col">Row ID</th>
                 <th scope="col">Album Name</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Genre</th>
@@ -15,12 +16,13 @@
                 <th scope="col">Rating</th>
                 <th scope="col">Condition</th>
                 <th scope="col">Price</th>
-                <th scope="col">Update</th>
+                <th scope="col">Update/Delete</th>
             </tr>
         </thead>
         <tbody>
             {{#records}}
             <tr>
+                <td>{{rowid}}</td>
                 <td>{{album_name}}</td>
                 <td>{{artist}}</td>
                 <td>{{genre}}</td>
@@ -28,7 +30,12 @@
                 <td>{{rating}}</td>
                 <td>{{condition}}</td>
                 <td>{{price}}</td>
-                <td><button type="button" class="btn btn-primary">Update</button>  <button type="button" class="btn btn-danger">Delete</button></td>
+                <td>
+                    <form method="post">
+                        <button class="btn btn-primary" >Update Record</button>
+                        <button id={{rowid}} class="btn btn-danger" formaction="/deleterecord/{{rowid}}">Delete</button>
+                    </form>
+                </td>
             </tr>
             {{/records}}
         </tbody>

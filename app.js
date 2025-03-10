@@ -2,8 +2,8 @@ const express = require("express");
 const mustacheExpress = require("mustache-express");
 const model = require("./model.js");
 const router = require("./controller.js");
-
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
