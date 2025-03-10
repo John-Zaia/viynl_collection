@@ -15,6 +15,11 @@ async function add_record(record){
                    [record.album_name, record.artist, record.genre, record.year, record.rating, record.condition, record.price]);
 }
 
+async function update_record(id, record){
+    await db.all(`UPDATE Records SET album_name = ?, artist = ?, genre = ?, year = ?, rating = ?, condition = ?, price = ? WHERE rowid = ?`,
+        [record.album_name, record.artist, record.genre, record.year,  record.rating, record.condition, record.price, id])
+}
+
 async function delete_record(id){
     await db.run(`DELETE FROM Records WHERE rowid = ?`, [id]);
 }
@@ -85,5 +90,6 @@ module.exports = {
     filter_records,
     view_all_records,
     delete_record,
-    sort_by_year
+    sort_by_year,
+    update_record
 }

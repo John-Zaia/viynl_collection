@@ -23,6 +23,21 @@ router.post("/add", async (req, res) =>{
         res.redirect("/");
 })
 
+router.post("/update/:id", async (req, res) =>{
+    const id = req.params.id
+    const record = {
+        album_name: req.body.album_name,
+        artist: req.body.artist,
+        genre: req.body.genre,
+        year: req.body.year,
+        rating: req.body.rating,
+        condition: req.body.condition,
+        price: req.body.price
+    }
+    await model.update_record(id, record);
+    res.redirect("/");
+})
+
 router.post("/delete", async (req, res) =>{
     await model.delete_all_records();
     res.redirect("/");
