@@ -31,8 +31,12 @@ async function view_all_records(){
     return await db.all("SELECT * FROM Records")
 }
 
+async function sort_by_year(){
+    return await db.all("SELECT rowid, * FROM Records ORDER BY year DESC")
+}
+
 async function filter_records(filters){
-    let sql_query = "SELECT * FROM Records";
+    let sql_query = "SELECT rowid, * FROM Records";
     let conditions = [];
     let values = [];
 
@@ -80,5 +84,6 @@ module.exports = {
     delete_all_records,
     filter_records,
     view_all_records,
-    delete_record
+    delete_record,
+    sort_by_year
 }

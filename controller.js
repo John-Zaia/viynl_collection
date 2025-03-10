@@ -29,10 +29,34 @@ router.post("/delete", async (req, res) =>{
 })
 
 router.post("/deleterecord/:id", async (req, res) =>{
-    const data = await db.all("DELETE FROM Records WHERE rowid=?", [req.params.id]);
     const id = req.params.id;
-    await model.delete_record(id);
-    res.redirect("/");
+    const url = req.headers.referer;
+
+    if (url && url.includes("/filter"))
+    {
+        const {album_name, artist, genre, year, rating, condition, price} = req.body;
+
+        const filters = {album_name, artist, genre, year, rating, condition, price}
+    
+        const valid_filters = Object.fromEntries(
+            Object.entries(filters).filter(([key, value]) => value !== "")
+        );
+        
+        await model.delete_record(id);
+        const filtered_records = await model.filter_records(valid_filters);
+        res.render("homepage", {records: filtered_records});
+    }
+    else if (url && url.includes("/sort"))
+    {
+        await model.delete_record(id);
+        const sorted_records = await model.sort_by_year();
+        res.render("homepage", {records: sorted_records})
+    }
+    else
+    {
+        await model.delete_record(id);
+        res.redirect("/");
+    }
 })
 
 router.post("/filter", async (req, res) =>{
@@ -51,6 +75,11 @@ router.post("/filter", async (req, res) =>{
 router.post("/viewall", async (req, res) =>{
     await model.view_all_records();
     res.redirect("/")
+})
+
+router.post("/sort", async (req, res) =>{
+    const sorted_records = await model.sort_by_year();
+    res.render("homepage", {records: sorted_records})
 })
 
 module.exports = router;

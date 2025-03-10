@@ -8,11 +8,10 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">Row ID</th>
                 <th scope="col">Album Name</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Genre</th>
-                <th scope="col">Year</th>
+                <th scope="col"><form method="post"><button formaction="/sort">Year</button></form></th>
                 <th scope="col">Rating</th>
                 <th scope="col">Condition</th>
                 <th scope="col">Price</th>
@@ -22,7 +21,6 @@
         <tbody>
             {{#records}}
             <tr>
-                <td>{{rowid}}</td>
                 <td>{{album_name}}</td>
                 <td>{{artist}}</td>
                 <td>{{genre}}</td>
