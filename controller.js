@@ -17,10 +17,20 @@ router.post("/add", async (req, res) =>{
         year: req.body.year,
         rating: req.body.rating,
         condition: req.body.condition,
-        price: req.body.price
+        price: req.body.price,
+        last_played: req.body.last_played
         };
         await model.add_record(record);
         res.redirect("/");
+})
+
+router.post("/last_played/:id", async (req, res) =>{
+    const current_date = new Date();
+    const date = current_date.toISOString().split('T')[0].toString();
+    const id = req.params.id;
+
+    await model.add_last_played(date, id);
+    res.redirect("/");
 })
 
 router.post("/update/:id", async (req, res) =>{
@@ -32,7 +42,8 @@ router.post("/update/:id", async (req, res) =>{
         year: req.body.year,
         rating: req.body.rating,
         condition: req.body.condition,
-        price: req.body.price
+        price: req.body.price,
+        last_played: req.body.last_played
     }
     await model.update_record(id, record);
     res.redirect("/");

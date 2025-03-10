@@ -15,6 +15,7 @@
                 <th scope="col">Rating</th>
                 <th scope="col">Condition</th>
                 <th scope="col">Price</th>
+                <th scope="col">Last Played</th>
                 <th scope="col">Update/Delete</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{rating}}</td>
                 <td>{{condition}}</td>
                 <td>{{price}}</td>
+                <td>{{last_played}}</td>
                 <td>
                     <form method="POST">
                     
@@ -92,6 +94,7 @@
                         </div>
                     </form>
                     <form method="POST"><button id={{rowid}} class="btn btn-danger" formaction="/deleterecord/{{rowid}}">Delete</button></form>
+                    <form method="POST"><button id={{rowid}} class="btn btn-primary" formaction="/last_played/{{rowid}}">Played</button></form>
                 </td>
             </tr>
             {{/records}}

@@ -10,14 +10,14 @@ async function startup()
 }
 
 async function add_record(record){
-    await db.run(`INSERT INTO Records (album_name, artist, genre, year, rating, condition, price)
-                   VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                   [record.album_name, record.artist, record.genre, record.year, record.rating, record.condition, record.price]);
+    await db.run(`INSERT INTO Records (album_name, artist, genre, year, rating, condition, price, last_played)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+                   [record.album_name, record.artist, record.genre, record.year, record.rating, record.condition, record.price, record.last_played]);
 }
 
 async function update_record(id, record){
-    await db.all(`UPDATE Records SET album_name = ?, artist = ?, genre = ?, year = ?, rating = ?, condition = ?, price = ? WHERE rowid = ?`,
-        [record.album_name, record.artist, record.genre, record.year,  record.rating, record.condition, record.price, id])
+    await db.all(`UPDATE Records SET album_name = ?, artist = ?, genre = ?, year = ?, rating = ?, condition = ?, price = ?, last_played = ?, WHERE rowid = ?`,
+        [record.album_name, record.artist, record.genre, record.year,  record.rating, record.condition, record.price, record.last_played, id])
 }
 
 async function delete_record(id){
@@ -38,6 +38,11 @@ async function view_all_records(){
 
 async function sort_by_year(){
     return await db.all("SELECT rowid, * FROM Records ORDER BY year DESC")
+}
+
+async function add_last_played(date, id){
+    await db.run(`UPDATE Records SET last_played = ? WHERE rowid = ?`,
+    [date, id])
 }
 
 async function filter_records(filters){
@@ -91,5 +96,6 @@ module.exports = {
     view_all_records,
     delete_record,
     sort_by_year,
-    update_record
+    update_record,
+    add_last_played
 }
