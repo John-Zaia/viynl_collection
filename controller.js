@@ -28,7 +28,16 @@ router.post("/delete", async (req, res) =>{
 })
 
 router.post("/filter", async (req, res) =>{
-    
+    const {album_name, artist, genre, year, rating, condition, price} = req.body;
+
+    const filters = {album_name, artist, genre, year, rating, condition, price}
+
+    const valid_filters = Object.fromEntries(
+        Object.entries(filters).filter(([key, value]) => value !== "")
+    );
+
+    const filtered_records = await model.filter_records(valid_filters);
+    res.render("homepage", {records: filtered_records});
 })
 
 module.exports = router;
