@@ -20,9 +20,10 @@ router.post("/add", async (req, res) =>{
         price: req.body.price,
         last_played: req.body.last_played
         };
+
         await model.add_record(record);
         res.redirect("/");
-})
+});
 
 router.post("/last_played/:id", async (req, res) =>{
     const current_date = new Date();
