@@ -34,11 +34,11 @@
                     <td>
                         <form method="POST">
                         
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Record</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{rowid}}">Update Record</button>
                         </form>
                         <form method="POST" action="/update/{{rowid}}">
                             <input type="hidden" name="rowid" value="{{rowid}}">
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal{{rowid}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-dark">Save changes</button>
+                                            <button class="btn btn-dark" type="submit">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
