@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/add", async (req, res) =>{
-
     const record = {
         album_name: req.body.album_name,
         artist: req.body.artist,

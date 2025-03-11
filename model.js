@@ -16,8 +16,8 @@ async function add_record(record){
 }
 
 async function update_record(id, record){
-    await db.all(`UPDATE Records SET album_name = ?, artist = ?, genre = ?, year = ?, rating = ?, condition = ?, price = ?, last_played = ?, WHERE rowid = ?`,
-        [record.album_name, record.artist, record.genre, record.year,  record.rating, record.condition, record.price, record.last_played, id])
+    await db.all(`UPDATE Records SET album_name = ?, artist = ?, genre = ?, year = ?, rating = ?, condition = ?, price = ? WHERE rowid = ?`,
+        [record.album_name, record.artist, record.genre, record.year,  record.rating, record.condition, record.price, id])
 }
 
 async function delete_record(id){
